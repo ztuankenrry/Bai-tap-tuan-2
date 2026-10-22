@@ -1,0 +1,34 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class StackList {
+private:
+    vector<int> data;
+
+public:
+    bool isEmpty() {
+        return data.empty();
+    }
+
+    void push(int x) {
+        data.push_back(x);
+    }
+
+    void pop() {
+        if (isEmpty()) {
+            cout << "Stack Underflow!\n";
+            return;
+        }
+        data.pop_back();
+    }
+
+    int top() {
+        if (isEmpty()) {
+            cout << "Stack is empty!\n";
+            return -1;
+        }
+        return data.back();
+    }
+};
