@@ -1,0 +1,59 @@
+#include <iostream>
+
+using namespace std;
+
+struct NodeQueue {
+    int data;
+    NodeQueue* next;
+    NodeQueue(int val) {
+        data = val;
+        next = nullptr;
+    }
+};
+
+class QueueLinkedList {
+private:
+    NodeQueue* frontNode; 
+    NodeQueue* rearNode;  
+
+public:
+    QueueLinkedList() {
+        frontNode = nullptr;
+        rearNode = nullptr;
+    }
+
+    bool isEmpty() {
+        return frontNode == nullptr;
+    }
+
+    void enqueue(int x) {
+        NodeQueue* newNode = new NodeQueue(x);
+        if (isEmpty()) {
+            frontNode = rearNode = newNode;
+            return;
+        }
+        rearNode->next = newNode;
+        rearNode = newNode;
+    }
+
+    void dequeue() {
+        if (isEmpty()) {
+            cout << "Queue Underflow!\n";
+            return;
+        }
+        NodeQueue* temp = frontNode;
+        frontNode = frontNode->next;
+        if (frontNode == nullptr) {
+            rearNode = nullptr; 
+        }
+        delete temp;
+    }
+
+    int front() {
+        if (isEmpty()) {
+            cout << "Queue is empty!\n";
+            return -1;
+        }
+        return frontNode->data;
+    }
+};
