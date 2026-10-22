@@ -13,10 +13,10 @@ struct Node {
 };
 
 class StackLinkedList {
-private:
+
     Node* topNode; 
 
-public:
+
     StackLinkedList() {
         topNode = nullptr;
     }
